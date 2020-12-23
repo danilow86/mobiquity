@@ -1,0 +1,26 @@
+
+{
+  "name": "mobiquity",
+  "version": "1.0.0",
+  "description": "This is a test for mobiquity",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Danilo Santos",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "supertest": "^4.0.2",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mockawesome": "^4.1.0",
+    "request":"^2.88.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/danilow86/mobiquity.git"
+  },
+  "homepage": "https://github.com/danilow86/mobiquity#readme"
+}

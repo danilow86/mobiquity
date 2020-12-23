@@ -1,0 +1,42 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+# using 2.1 provides access to orbs and other features
+version: 2.1 
+# Use a package of configuration called an orb.
+orbs:
+  # Declare a dependency on the welcome-orb
+    node: circleci/node@2.0.2 # the node orb provides common node-related configuration 
+# Orchestrate or schedule a set of jobs
+workflows:
+  # Name the workflow "welcome"
+  welcome:
+    # Run the welcome/run job in its own container
+  jobs:
+    run tests:
+      docker:
+      -image: circleci/node:10
+    steps:
+    - checkout
+    - run:
+      name: Install npm dependencies
+      command: |
+        npm install --save
+  - run:
+      name: Run unit Tests
+      command: |
+      ./node_modules/mocha/bin/mocha test/ --reporter mochawesome --reporter-options reportDir=test-results,reportfilename=test-results
+  -store_test_results:
+    path: test-results
+  -store_artifacts:
+    path: test-results
+    
+
+  workflows:
+    build_test:
+      jobs:
+        -run_tests
+      # - node/test:
+      #     version: 13.11.0
+      # - node/test:
+      #     version: 12.16.0
+      # - node/test:
+      #     version: 10.19.0
